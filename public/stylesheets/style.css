@@ -1,0 +1,69 @@
+:root {
+  --main-coordinates: (screen.width - 625)px;
+}
+
+.bg-light {
+  background-color:#f4dcc1!important;
+}
+
+@media (min-width: 625px) and (max-width: 992px) {
+  .navbar-expand-lg .navbar-toggler {
+    display: none;
+  }
+
+  .navbar {
+    flex-wrap: unset;
+  }
+
+  .nav-item {
+    margin-right: 5px;
+  }
+
+  .collapse:not(.show) {
+    display: flex!important;
+  }
+
+  .mr-auto, .mx-auto {
+    margin-right: var(--main-coordinates);
+  }
+
+  .navbar-expand-lg .navbar-nav {
+    flex-direction: row;
+  }
+}
+
+
+.form-check {
+  padding: 10px;
+  padding-bottom: 20px;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  color: #0fcbe4bd;
+}
+
+.exampleCheck1{
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.labelChecker{
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.form-check-input {
+   position: relative; 
+   margin-top: 0; 
+   margin-left: 0; 
+}
+.hide{
+  display: none;
+}

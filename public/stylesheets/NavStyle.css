@@ -1,0 +1,146 @@
+li{
+margin: 0px 10px;
+}
+/*--------------------------------------------------------------*/
+@import url(https://fonts.googleapis.com/css?family=Sanchez);
+*,
+*::before,
+*::after {
+transition: 400ms all ease-in-out 50ms;
+box-sizing: border-box;
+backface-visibility: hidden;
+}
+html,body{font-family: 'Sanchez', serif;}
+
+
+input[type="checkbox"] {
+display: none;
+}
+input[type="checkbox"] {
+display: none;
+}
+.check-toggle{
+width: 100px;
+height: 50px;
+background: rgba(43, 43, 43, 1);
+
+box-shadow: 0 0 2px rgba(43,43,43,1);
+}
+/*Button is :CHECKED*/
+input[type="checkbox"]:checked ~ div {
+background: rgba(73,168,68,1);
+box-shadow: 0 0 2px rgba(73,168,68,1);
+}
+input[type="checkbox"]:checked ~ div .label {
+left: 55px;
+transform: rotate(360deg);
+}
+/*shared*/
+div,
+.label {
+border-radius: 50px;
+}
+/*'un':checked state*/
+.label {
+height: 40px;
+width: 40px;
+background: rgba(255, 255, 255, 1);
+position: relative;
+top: 5px;
+left: 5px;
+cursor: pointer;
+}  
+.label::before {
+content: '';
+height: 30px;
+width: 5px;
+position: absolute;
+top: calc(50% - 15px);
+left: calc(50% - 2.5px);
+transform: rotate(45deg);
+}
+.label::after {
+content: '';
+height: 5px;
+width: 30px;
+position: absolute;
+top: calc(50% - 2.5px);
+left: calc(50% - 15px);
+transform: rotate(45deg);
+}
+.label::before,
+.label::after{
+background: rgba(43,43,43,1);
+border-radius: 5px;
+}
+/* pesduo class on toggle */
+input[type="checkbox"]:checked ~ div .label::before{
+height: 30px;
+top: calc(82% - 25px);
+left: calc(55% - 2.5px);
+background: rgba(73,168,68,1);
+}
+input[type="checkbox"]:checked ~ div .label::after{
+width: 15px;
+top: calc(125% - 25px);
+left: calc(9% - 3px);
+background: rgba(73,168,68,1);
+}  
+
+
+
+/*--------------------------------------------------------------*/
+
+nav {
+font-size: 26px;
+}
+.navbar-brand {
+font-size: 26.5px;
+}
+.collapse {
+margin-left: 25px;
+}
+.bg-light{
+background-color: #f4dcc1ef!important;
+}
+.img-logo{
+width: 50px;
+height: auto;
+}
+.side-nav{
+height:100%;
+width:0;
+position:fixed;
+background-image: url('/images/leaf.png');
+background-size: 6% 3%;
+z-index:1000;
+top:0;
+left:0;
+border-radius: 0px;
+background-color:#111;
+opacity:0.9;
+overflow-x:hidden;
+padding-top:60px;
+transition:0.5s;
+}
+.side-nav a{
+padding:10px 10px 10px 30px;
+text-decoration:none;
+font-size:22px;
+color:#ccc;
+display:block;
+transition:0.3s;
+}
+.side-nav a:hover{
+color:#fff;
+}
+.side-nav .btn-close{
+position:absolute;
+top:0;
+right:22px;
+font-size:36px;
+margin-left:50px;
+}
+@media(max-width:568px){
+.navbar-nav{display:none}
+}

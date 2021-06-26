@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Signup Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script defer src="./javascripts/script.js"></script>
+</head>
+  <body>
+    <%- include('../navbar'); -%>
+    <div class="container">
+    <h1 class="SignUp">Sign Up</h1>
+
+    <% if (userr.errors) { %>
+    <h2>Errors found in form</h2>
+    <ul>
+        <% for (let msg of Object.values(userr.errors)) { %>
+        <li>
+            <%= msg %>
+        </li>
+        <% } %>
+    </ul>
+    <% } %>
+
+    <form method="POST">
+        <div class="form-group">
+            <label for="formGroupExampleInput">Full Name</label>
+            <input name='Name' type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+        </div>
+        <% if (error.type == 'name') { %>
+          <h4 id="alert" style="color: red;"><%= error.text %></h4>
+        <% } %>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input name='Email' type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        </div>
+        <% if (error.type == 'email') { %>
+          <h4 id="alert" style="color: red;"><%= error.text %></h4>
+        <% } %>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input name='Password' type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your Password with anyone else.</small>
+        </div>
+        <% if (error.type == 'password') { %>
+          <h4 id="alert" style="color: red;"><%= error.text %></h4>
+        <% } %>
+        <div class="form-check">
+            <input type="checkbox" onclick="passwordShower()" class="form-check-input" id="exampleCheck1">
+            <label id="labelChecker" class="form-check-label" for="exampleCheck1">Show Password</label>
+        </div>
+
+        <input type="submit" class="btn btn-primary btn-lg active btn-block" value="Sign Up" />
+        <h3 class="Member">Already a member?</h3>
+        <a href='/sessions' class="btn btn-secondary btn-lg active btn-block" role="button" aria-pressed="true">Login</a>
+    </form>
+    </div>
+  </body>
+  <style>
+      .Member {
+          justify-content: center;
+          display: flex;
+          color: rgba(0, 150, 150, 0.562);
+          align-items: center;
+      }
+      .SignUp {
+        color: rgba(40, 52, 85, 0.555);
+      }
+      
+      .alert1 {
+      text-align: center;
+      }
+  </style>
+
+<script>
+  // var c = document.getElementById('alert');
+  // if (document.getElementById("alert")) {
+  //   console.log('work');
+  //   setTimeout(function(){ c.className('hide'); }, 6000);
+  // } if(c.className === 'hide' && document.getElementById("alert")) {
+  //   console.log('work');
+  //   c.className('');
+  //   setTimeout(function(){ c.style.display = 'none' }, 6000);
+  // }
+  </script>
+</html>
+
+

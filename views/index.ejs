@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="shortcut icon" href="/images/Ziv-logo.png" type="image/x-icon">
+  </head>
+  <%- include('./navbar'); -%>
+  <body>
+    <section class="hero">
+      <div class="container">
+          <div class="main-message">
+              <h3>The great Chatup</h3>
+              <h1>Is Open</h1>
+              <p>After 2 monthes of work it finaly happenes.<br>Now you can CHAT without any problems.   </p>
+              <% if (user1 != null) { %>
+                <p>Nice to see you: <u><%= user1 %></u></p>
+                <ul class="messages"></ul>
+                <form action="/sessions/logout" method="POST">
+                  <input type="submit" class="btn" value="Logout" />
+                </form>
+              <% } else {  %>
+                <div class="cta">
+                  <a href="/Chatup" class="btn">Start Now</a>
+                </div>
+              <% } %>
+          </div>
+      </div>
+  </section>
+
+    <script src="/socket.io/socket.io.js"></script>
+      <script>
+          const socket = io('ws://localhost:3000/');
+          const messages = document.querySelector('.messages');
+          socket.on('msg', function(text) {
+              console.log('--- new message');
+              console.log(text);
+              const li = document.createElement('li');
+              li.textContent = text;
+              messages.appendChild(li);
+          });
+    </script>
+  </body>
+  <style>
+    *,
+    *::before,
+    *::after{
+        margin: 0;
+        padding: 0;
+        box-sizing: inherit;
+    }
+
+    html{
+        font-family: 'Nunito',sans-serif;
+        font-size: 10px;
+        box-sizing: border-box;
+    }
+    a{
+        text-decoration: none;
+    }
+    ul{
+        list-style: none;
+    }
+    p{
+        font-size: 1.6rem;
+    }
+    img{
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+    section{
+        padding: 5rem, 0;
+    }
+
+    .container{
+        width: 100%;
+        max-width: 98rem;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+
+    }
+
+    .hero{
+        width: 100%;
+        height: 80vh;
+        background: linear-gradient(135deg, rgba(49,24,131,0.9) 0%, rgba(72,56,149,0.8) 100%), url("images/header-bg.jpg") center no-repeat;
+        background-size: cover;
+        position: relative;
+    }
+    .hero::before{
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -3px;
+        width: 100%;
+        height: 4.7rem;
+        background: url(images/wave-small.png) center no-repeat;
+        background-size: cover;
+    }
+    .main-message{
+        width: 100%;
+        max-width: 50rem;
+        color: #fafafa;
+        text-transform: uppercase;
+        text-align: center;
+        transform: translateY(20%);
+    }
+    .main-message h3{
+        font-size: 1.6rem;
+    }
+    .main-message h1{
+        font-family: 'Aldrich', sans-serif;
+        font-size: 4rem;
+        margin: 1rem 0;
+    }
+    .main-message p{
+        text-transform: lowercase;
+    }
+    .btn{
+        background-color: #eb648c;
+        border-radius: 2rem;
+        color: #fafafa;
+        display: inline-block;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        padding: 1rem 2.5rem;
+        text-transform: uppercase;
+        transition: background-color 650ms;
+    }
+    .btn:hover{
+        background-color: #ce587b;
+    }
+    footer{
+        padding: 2.5rem 0;
+        background-color: #d7d4ed;
+        text-align: center;
+        color: rgba(0,0,0,0.7);
+    }
+
+    @media screen and (min-width: 350px){
+        .main-message{
+            transform: translateY(40%);
+        }
+    }
+    @media screen and (min-width: 470px){
+        .hero::before{
+            height: 9.4rem;
+            background: url("images/wave-medium.png");
+            background-size: cover;
+        }
+    }
+    @media screen and (min-width: 700px){
+        header{
+            height: 8rem;
+        }
+        .hero{
+            height: 60vh;
+        }
+        .main-message{
+            transform: translateY(50%);
+        }
+    }
+
+    @media screen and (min-width: 950px){
+        .hero::before{
+            height: 22.7rem;
+            background: url("images/wave-large.png");
+            background-size: cover;
+        }
+    }
+
+    @media screen and (min-width: 1200px){
+        .hero{
+            height: 75vh;
+        }
+    }
+  </style>
+</html>

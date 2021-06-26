@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Reset</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="shortcut icon" href="/images/Ziv-logo.png" type="image/x-icon">
+  </head>
+  <body>
+    <%- include('./navbar'); -%>
+    <div class="container">
+      <% if (error != '') { %>
+        <div class="alert alert-danger" role="alert">
+          <h4 id="alert"><%= error %></h4>
+        </div>
+      <% } %>
+        <h1 class="SignUp">Reset</h1>
+        <form method="POST">
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input name='Password' type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your Password with anyone else.</small>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" onclick="passwordShower()" class="form-check-input" id="exampleCheck1">
+                <label id="labelChecker" class="form-check-label" for="exampleCheck1">Show Password</label>
+            </div>
+            <input type="submit" class="btn btn-primary btn-lg active btn-block" value="Update Password" />
+        </form>
+    </div>
+</body>
+<style>
+    .alert1 {
+      text-align: center;
+    }
+</style>
+<script>
+  function passwordShower() {
+      var x = document.getElementById("exampleInputPassword1");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+  }
+</script>
+</html>

@@ -1,0 +1,65 @@
+<link rel="stylesheet" href="/stylesheets/NavStyle.css">
+
+<div class="NavDiv">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/"><img src="/images/Ziv-logo.png" class="img-logo"> ChatUp</a>
+  <button onclick="openSlideMenu()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+        <% if(user === undefined || user === null){ %>
+          <li class="nav-item active">
+            <a class="nav-link" href="/sessions">Login<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users">SignUp</a>
+          </li>
+        <% } else { %>
+            <li class="nav-item active">
+              <a class="nav-link" href="/Chatup">Hello <span class="UserName"><u><%= user.dataValues.Name %></u></span><span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/Chatup">Chat<span class="sr-only">(current)</span></a>
+            </li>
+            <li>
+              <input type="checkbox" id="toggle" class="toggle1"/>
+              <div class="check-toggle">
+                <label for="toggle" class="label"></label>
+              </div>
+            </li>
+        <% } %>
+    </ul>
+  </div>
+  </nav>
+  <div id="side-menu" class="side-nav">
+  <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
+  <% if(user === undefined || user === null){ %>
+      <a class="nav-link" href="/sessions">Login<span class="sr-only">(current)</span></a>
+      <a class="nav-link" href="/users">SignUp</a>
+  <% } else { %>
+        <a class="nav-link" href="/settings">Hello <span class="UserName"><u><%= user.dataValues.Name %></u></span><span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/Chatup">Chat<span class="sr-only">(current)</span></a>
+        <div style="padding: 10px 10px 10px 30px;">
+          <input type="checkbox" id="toggle1" class="toggle2"/>
+          <div class="check-toggle">
+            <label for="toggle1" class="label"></label>
+          </div>
+        </div>
+  <% } %>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+crossorigin="anonymous"></script>
+<script src="/javascripts/notification.js"></script>
+<script>
+  function openSlideMenu(){
+    document.getElementById('side-menu').style.width = '250px';
+    /*document.getElementById('main').style.marginLeft = '250px';*/
+  }
+  function closeSlideMenu(){
+    document.getElementById('side-menu').style.width = '0';
+    /*document.getElementById('main').style.marginLeft = '0';*/
+  }
+</script>
