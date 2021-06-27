@@ -1,13 +1,21 @@
 {
-  "name": "login",
+  "name": "ordercubic",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zivbeh/ordercubic.git"
+  },
+  "author": "Ziv Behar",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zivbeh/ordercubic/issues"
+  },
+  "homepage": "https://github.com/zivbeh/ordercubic#readme",
   "dependencies": {
     "bcrypt": "^5.0.0",
     "connect-flash": "^0.1.1",
