@@ -31,4 +31,3 @@ function init(server) {
 }
 
 module.exports.init = init;
-module.exports.flash = flash;
