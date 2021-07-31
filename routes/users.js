@@ -15,6 +15,9 @@ router.get('/', async function(req, res, next) {
   if (flash.email != undefined){
     error = {type: "email", text: flash.email[0]};
   }
+  if (flash.Company != undefined){
+    error = {type: "Company", text: flash.Company[0]};
+  }
   if (flash.password != undefined){
     error = {type: "password", text: flash.password[0]};
   }
@@ -40,6 +43,8 @@ router.post('/', async function(req, res, next) {
     error = req.flash('name', 'Name length must be less than 17 chars')
   } else if (req.body.Name.length <= 6) {
     error = req.flash('name', 'Name length must be more than 6 chars')
+  } else if (req.body.Company.length != 9) {
+    error = req.flash('Company', 'Company length must be 9 chars')
   }
   
   if (error != undefined) {
@@ -49,7 +54,8 @@ router.post('/', async function(req, res, next) {
   const user = {
     Name: req.body.Name,
     Password: req.body.Password,
-    Email: req.body.Email
+    Email: req.body.Email,
+    companyCode: req.body.Company
   }
   console.log('email')
   const token = jwt.sign({ user }, process.env.JWT_KEY, { expiresIn: '30m' })
@@ -72,10 +78,14 @@ router.get('/verify-email', async function(req, res, next) {
   try {
     const token = req.query.token;
     jwt.verify(token, process.env.JWT_KEY, async (err, decodedToken) => {
-      console.log(decodedToken)
+      console.log(decodedToken, decodedToken.user.companyCode)
+      const company_code_id = await db.companyCode.findOne({ attributes: ['id'] , where: { code: decodedToken.user.companyCode } }); 
+      console.log('tesdadsadasdasd', company_code_id.dataValues.id)
       const user = await User.create(
-        { Name: decodedToken.user.Name, Password: decodedToken.user.Password, Email: decodedToken.user.Email }
+        { Name: decodedToken.user.Name, Password: decodedToken.user.Password, Email: decodedToken.user.Email, companyCodeId: company_code_id.dataValues.id }
       );
+      user.dataValues.companyCodeId = company_code_id.dataValues.id;
+      await user.save();
 
       console.log('1', user);
       try {
@@ -87,7 +97,7 @@ router.get('/verify-email', async function(req, res, next) {
       }
     });
   } catch (err) {
-    req.flash('error', 'Password reset token is invalid or has expired.');
+    req.flash('error', 'Email Verification token is invalid or has expired.');
     return res.redirect('/users');
   }
 });

@@ -1,33 +1,15 @@
 'use strict';
-
-const users = require("../models/users");
-
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Users', {
+    await queryInterface.createTable('companyCodes', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      Name: {
+      code: {
         type: Sequelize.STRING
-      },
-      Password: {
-        type: Sequelize.STRING,
-        validate: {
-          max: 15,
-          min: 7,
-        }
-      },
-      Email: {
-        type: Sequelize.STRING,
-        unique: true,
-        validate: {    
-          isEmail: true,
-          notEmpty: true,
-        }
       },
       createdAt: {
         allowNull: false,
@@ -40,6 +22,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Users');
+    await queryInterface.dropTable('companyCodes');
   }
 };

@@ -11,7 +11,7 @@ var flash = require('connect-flash');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
+var booksRouter = require('./routes/books');
 
 var app = express();
 
@@ -36,7 +36,7 @@ require('./initializer/passport');
  
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
+app.use('/book', booksRouter);
 
 const sessionsRouter = require('./routes/sessions');
 app.use('/sessions', sessionsRouter);
