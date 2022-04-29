@@ -10,7 +10,7 @@ var transporter = nodemailer.createTransport({
 
 module.exports.sender = function (Email, text, subject){
   var mailOptions = {
-    from: 'chatupbussness@gmail.com',
+    from: `${process.env.EMAIL_EMAIL}@gmail.com`,
     to: Email,
     subject: subject,
     text: text
