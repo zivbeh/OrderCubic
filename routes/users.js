@@ -171,7 +171,7 @@ router.post('/workwithus', async function(req, res, next) {
   //save in db
   await db.Tokens.create({ shortId: shortId, dataJson: buff, isValidated: false});
 
-  const token = jwt.sign({ shortId: shortId }, process.env.JWT_KEY, { expiresIn: '420000m' })
+  const token = jwt.sign({ shortId: shortId }, process.env.JWT_KEY, { expiresIn: '840000m' })
   const mailOptions = { // check email confirmation works
     to: user.Email,
     subject: 'Qbook - Validate Email',
@@ -179,11 +179,11 @@ router.post('/workwithus', async function(req, res, next) {
     Please verify your account by clicking on this link below:\n\n
     http://${req.headers.host}/users/verify-email-admin?token=${token}\n\n
     \n\n
-    This Link shall expire in 7m, Thank you.\n\n
+    This Link shall expire in 15m, Thank you.\n\n
     (C) All rights reserved to Qbook.`
   }
   mailer.sender(mailOptions.to, mailOptions.text, mailOptions.subject);
-  res.render('error', { message: 'Email Sent', error: {status: 'You have 7 minutes to verify your account.', stack: ''}})
+  res.render('error', { message: 'Email Sent', error: {status: 'You have 15 minutes to verify your account.', stack: ''}})
   //res.send('Email sent')
 });
 
