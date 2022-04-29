@@ -1,8 +1,0 @@
-var connection = mysql.createConnection({
-  host     : 'us-cdbr-east-04.cleardb.com',
-  user     : 'bbc1d42739274d',
-  password : 'b3c648e7',
-  database : 'heroku_c7a2b9cbe8bbce5'
-});
-
-mysql://bbc1d42739274d:b3c648e7@us-cdbr-east-04.cleardb.com/heroku_c7a2b9cbe8bbce5?reconnect=true
