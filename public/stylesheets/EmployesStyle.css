@@ -1,0 +1,138 @@
+*,
+*::before,
+*::after {
+    transition: 400ms all ease-in-out 50ms;
+    box-sizing: border-box;
+    backface-visibility: hidden;
+}
+
+html {
+    height: 100%;
+    min-height: 100%;
+}
+
+body {
+    height: 100%;
+    background: linear-gradient(217deg, rgba(58, 155, 89, 0.8), rgba(65, 211, 160, 0.421) 70.71%),
+            linear-gradient(127deg, rgba(21, 152, 100, 0.8), rgb(118, 168, 211) 70.71%),
+            linear-gradient(336deg, rgba(22, 235, 89, 0.8), rgb(27, 240, 190) 70.71%);
+}
+
+header {
+    margin: 1%;
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    font-family: "Trirong", serif;
+}
+
+h1 {
+    font-size: 3em;
+    font-variant: small-caps;
+}
+
+.container {
+    font-family: "Gideon Roman", serif;
+    display: grid;
+    justify-content: space-evenly;
+    justify-items: center;
+}
+
+.Add {
+    color: #0be7e7ad;
+    background-color: #3459a5cf;
+    border-radius: 0.5em;
+    border: #2c2c38 solid 1.4px;
+    width: 50%;
+}
+
+h3 {
+    color: #363a4f;
+}
+
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    background-image: url(https://img.icons8.com/ios/50/000000/upload--v1.png);
+    background-size: 20px;
+    background-position: 6px 6.5px;
+    background-repeat: no-repeat;
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 11px 6px 30px;
+    cursor: pointer;
+    color: #e3c5ff;
+}
+
+table {
+    width: 100%;
+    grid-column: 3 / 4;
+}
+thead {
+    background-color: #4a504fc7;
+}
+th {
+    text-align: center;
+}
+tbody tr {
+    margin: 5%;
+    background-color: #4b4b62;
+}
+td {
+    padding: 15px;
+    text-align: center;
+}
+tbody tr:hover {
+    background-color: #474787;
+}
+
+
+
+
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    display: block;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 1rem 1.5rem;
+    width: 35rem;
+    border-radius: 0.5rem;
+}
+
+.close-button {
+    float: right;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    background-color: lightgray;
+}
+
+.close-button:hover {
+    background-color: darkgray;
+}
+
+.show-modal {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}

@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Signup Page</title>
+    <title>SignUp Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel='stylesheet' href='/stylesheets/style.css' />
-    <script defer src="./javascripts/script.js"></script>
+    <link rel="shortcut icon" href="/images/Ziv-logo.png" type="image/x-icon">
+    <script defer src="/javascripts/script.js"></script>
 </head>
   <body>
     <%- include('../navbar'); -%>
@@ -38,16 +39,6 @@
         <% if (error.type == 'email') { %>
           <h4 id="alert" style="color: red;"><%= error.text %></h4>
         <% } %>
-
-        <div class="form-group">
-          <label for="formGroupExampleInput">Company Code</label>
-          <input name='Company' type="text" class="form-control" id="companyInput" placeholder="Example input">
-          <small id="CompanyText" class="">Company Code must be 9 Chars.</small>
-        </div>
-        <% if (error.type == 'Company') { %>
-          <h4 id="alert" style="color: red;"><%= error.text %></h4>
-        <% } %>
-
         <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
             <input name='Password' type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
@@ -60,10 +51,11 @@
             <input type="checkbox" onclick="passwordShower()" class="form-check-input" id="exampleCheck1">
             <label id="labelChecker" class="form-check-label" for="exampleCheck1">Show Password</label>
         </div>
-
         <input type="submit" class="btn btn-primary btn-lg active btn-block" value="Sign Up" />
-        <h3 class="Member">Already a member?</h3>
-        <a href='/sessions' class="btn btn-secondary btn-lg active btn-block" role="button" aria-pressed="true">Login</a>
+        <% if (!admin) { %>
+          <h3 class="Member">Already a member?</h3>
+          <a href='/sessions' class="btn btn-secondary btn-lg active btn-block" role="button" aria-pressed="true">Login</a>
+        <% } %>
     </form>
     </div>
   </body>
@@ -82,51 +74,6 @@
       text-align: center;
       }
   </style>
-
-  <script>
-
-    // make a function
-    var CompanyInput = document.getElementById('companyInput');
-    var CompanyText = document.getElementById('CompanyText');
-    var red = true;
-    console.log('ghhhhhghghhgh', CompanyInput)
-    CompanyText.classList.add('red');
-    CompanyInput.addEventListener("keydown", function(e){
-      console.log(CompanyInput.value)
-      if(e.keyCode==8){
-        if(red == false){
-          CompanyText.classList.remove('green');
-          CompanyText.classList.add('red');
-          red = true;
-        } else if ((CompanyInput.value.length - 1) == 9) {
-          CompanyText.classList.remove('red');
-          CompanyText.classList.add('green');
-          red = false;
-        }
-        return;
-      }
-      //console.log(CompanyInput.value.length)
-      if((CompanyInput.value.length < 8 || CompanyInput.value.length > 8) && red == false) {
-        CompanyText.classList.remove('green');
-        CompanyText.classList.add('red');
-        red = true;
-      } else if (CompanyInput.value.length == 8) {
-        CompanyText.classList.remove('red');
-        red = false;
-        CompanyText.classList.add('green');
-      }
-    });
-
-  // var c = document.getElementById('alert');
-  // if (document.getElementById("alert")) {
-  //   console.log('work');
-  //   setTimeout(function(){ c.className('hide'); }, 6000);
-  // } if(c.className === 'hide' && document.getElementById("alert")) {
-  //   console.log('work');
-  //   c.className('');
-  //   setTimeout(function(){ c.style.display = 'none' }, 6000);
-  // }
-  </script>
 </html>
 
 

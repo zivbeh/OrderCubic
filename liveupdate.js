@@ -19,7 +19,7 @@ function init(server) {
         session(req, res,  async () => {
             if (req.session && req.session.passport && req.session.passport.user) {
 
-                const user = await db.Users.findByPk(req.session.passport.user, function(err, user) {
+                const user = await db.User.findByPk(req.session.passport.user, function(err, user) {
                     if (err) return socket.disconnect();
                 });
 

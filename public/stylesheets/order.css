@@ -1,0 +1,227 @@
+html {
+    height: 100%;
+    min-height: 100%;
+}
+body {
+    /*background: linear-gradient(rgb(57, 38, 38), rgb(95, 59, 59));*/
+    height: 100%;
+    background: linear-gradient(217deg, rgba(52, 32, 4, 0.8), rgba(255,0,0,0) 70.71%),
+            linear-gradient(127deg, rgba(35, 3, 28, 0.8), rgb(95, 59, 59) 70.71%),
+            linear-gradient(336deg, rgba(4, 4, 41, 0.8), rgb(57, 38, 38) 70.71%);
+}
+
+canvas {
+    width: 100%;
+}
+
+
+h1 {
+    color: #ff8809;
+}
+ 
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: 0;
+    background: #26394c;
+    background-image: none;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+ 
+.select {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 40px;
+    line-height: 3;
+    background: #2C3E50;
+    overflow: hidden;
+    border-radius: .25em;
+    margin: 3px 0px 10px 0px;
+}
+ 
+select {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0 0 0 5px;
+    color: rgba(236, 183, 69, 0.918);
+    cursor: pointer;
+}
+
+select:hover {
+    border: 1px solid rgba(236, 183, 69, 0.918);
+    transition: 0.25s;
+}
+ 
+select::-ms-expand {
+    display: none;
+}
+ 
+.select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0 5%;
+    background: #34495E;
+    pointer-events: none;
+}
+ 
+.select:hover::after {
+    color: #F39C12;
+    border-top: 1px solid #F39C12;
+    border-bottom: 1px solid #F39C12;
+    border-right: 2px solid #F39C12;
+}
+ 
+.select::after {
+    -webkit-transition: .25s all ease;
+    -o-transition: .25s all ease;
+    transition: .25s all ease;
+}
+
+span {
+    color: rgba(236, 183, 69, 0.918);
+    margin: 10%;
+    margin-top: 15px;
+}
+
+.DropDown {
+    display: grid;
+    grid-template-columns: 43% 33% 19%;
+    justify-content: space-evenly;
+    grid-template-rows: repeat(2, 60%);
+    margin: 1%;
+    grid-column-gap: 5%;
+    margin-top: 10px;
+}
+
+.selectFlex {
+    display: flex;
+    flex-direction: column;
+}
+
+#resetZoomButton {
+    border: 1.5px groove #526d88;
+    color: #62caf0;
+    padding-bottom: 9px;
+    border-radius: 4px;
+    margin: 5px 0px 8px 10px;
+    visibility: hidden;
+}
+
+#resetZoomButton:hover {
+    color: #06acac;
+    border: 1.5px groove #4e96a0;
+    transition: 0.2s;
+}
+
+.labelDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#time {
+    background-color: #34495E;
+    color: #F39C12;
+    border: 1px solid black;
+    width: 40%;
+}
+
+#time:hover {
+    border: 1px solid #F39C12;
+    transition: 0.15s;
+}
+
+label {
+    color: #e0a038;
+}
+
+.top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.search {
+    background-color: #34495E;
+    color: #F39C12;
+    border: 1px black solid;
+    border-radius: 5px;
+    width: 45%;
+    background-image: url('https://img.icons8.com/ios/50/000000/search--v4.png') !important;
+    background-repeat: no-repeat;
+    background-size: 26px;
+    padding-left: 30px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    background-position-y: center;
+    background-position-x: 3px;
+    transition: 0.3s ease-in-out;
+}
+
+.search:hover {
+    color: #ff8809;
+    border: 1px #e0a038 solid;
+    background-position-x: right;
+    background-blend-mode: color-burn;
+    padding-left: 10px;
+}
+
+.listElementChosen {
+    color: #b913b9 !important;
+}
+
+.canvasGrid {
+    display: grid;
+    grid-template-columns: 28% 79%;
+    justify-content: space-evenly;
+    grid-template-rows: repeat(2, 60%);
+    margin: 1%;
+    grid-column-gap: 2%;
+    margin-top: 10px;
+}
+
+.inputWrapper {
+    margin-bottom: 7px;
+    padding: 3px 5px;
+}
+
+.nameInputForChangeName {
+    width: 100%;
+    background-color: #34495E;
+    color: #ff8809;
+    border-radius: 3px;
+    border: 1px solid black;
+    padding-left: 5px;
+}
+
+.listWrapper {
+    overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+::-webkit-scrollbar-track {
+    background: #26394c;
+    box-shadow: inset 0 0 5px #34495E;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ff8809;
+    width: 5px;
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #F39C12;
+}

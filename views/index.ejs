@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script defer src="/javascripts/ForIndex.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous" defer></script>
     <link rel="shortcut icon" href="/images/Ziv-logo.png" type="image/x-icon">
   </head>
   <%- include('./navbar'); -%>
@@ -12,7 +14,7 @@
     <section class="hero">
       <div class="container">
           <div class="main-message">
-              <h3>The great Cubook</h3>
+              <h3>The great Qbook</h3>
               <h1>Is Open</h1>
               <% if (user1 != null) { %>
                 <p>Nice to see you: <u><%= user1 %></u></p>
@@ -22,7 +24,7 @@
                 </form>
               <% } else {  %>
                 <div class="cta">
-                  <a href="/Book" class="btn">Book Now</a>
+                  <a href="/Book/ReserveCubicle" class="btn">Book Now</a>
                 </div>
               <% } %>
           </div>
@@ -31,15 +33,15 @@
 
     <script src="/socket.io/socket.io.js"></script>
       <script>
-          const socket = io('ws://localhost:3000/');
-          const messages = document.querySelector('.messages');
-          socket.on('msg', function(text) {
-              console.log('--- new message');
-              console.log(text);
-              const li = document.createElement('li');
-              li.textContent = text;
-              messages.appendChild(li);
-          });
+          const socket = io('ws://localhost:7600/'); // always check for the right headers!!!!!!!!!!!!
+        //   const messages = document.querySelector('.messages'); ////////////////////////////////////////////////////////////////////
+        //   socket.on('msg', function(text) {
+        //       console.log('--- new message');
+        //       console.log(text);
+        //       const li = document.createElement('li');
+        //       li.textContent = text;
+        //       messages.appendChild(li);
+        //   });
     </script>
   </body>
   <style>

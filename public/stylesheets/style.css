@@ -1,3 +1,17 @@
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid green;
+  -webkit-text-fill-color: green;
+  -webkit-box-shadow: none;
+}
+
 .bg-light {
   background-color:#f4dcc1!important;
 }
@@ -72,3 +86,152 @@
 .hide{
   display: none;
 }
+
+canvas {
+  width: 80%;
+  height: 55%
+}
+
+.canvasWrapper {
+  display: flex;
+  align-content: stretch;
+  justify-content: center;
+  margin: 10px;
+}
+
+.listWrapper {
+  width: 30%;
+  overflow-y: hidden;
+  margin: 0px 5px 0px 2px;
+}
+
+body {
+  background-color: aliceblue;
+}
+
+label {
+  color: #1d3134bd;
+}
+
+.inputWrapper {
+  margin-bottom: 7px;
+  padding: 3px 5px;
+}
+
+.nameInputForChangeName {
+  width: 100%;
+}
+
+.labelDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-right: 4px;
+}
+
+label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#deleteButton {
+  border: groove;
+  color: #f06262;
+  padding-bottom: 9px;
+  visibility: hidden;
+}
+
+#resetZoomButton {
+  border: groove;
+  color: #62caf0;
+  padding-bottom: 9px;
+  visibility: hidden;
+}
+
+.company {
+  background-image: url('https://img.icons8.com/ios/50/000000/company.png') !important;
+  background-size: 20px;
+  padding: 12px 150px 12px 35px;
+  background-position: 10px 8px;
+  background-repeat: no-repeat;
+} 
+
+.building {
+  background-image: url('https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/64/000000/external-building-interface-kiranshastry-lineal-kiranshastry.png') !important;
+  background-size: 20px;
+  padding: 2% 2% 2% 11%;
+  background-position: 6px 8px;
+  background-repeat: no-repeat;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.site {
+  background-image: url('https://img.icons8.com/external-outline-geotatah/64/000000/external-area-lockdown-outline-geotatah.png') !important;
+  background-size: 20px;
+  padding: 2% 2% 2% 11%;
+  background-position: 5px 7px;
+  background-repeat: no-repeat;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.floor {
+  background-image: url('https://img.icons8.com/ios/50/000000/kaaba.png') !important;
+  background-size: 20px;
+  padding: 2% 2% 2% 23%;
+  background-position: 5px 5px;
+  background-repeat: no-repeat;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.places {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  justify-content: space-evenly;
+  grid-template-rows: repeat(2, 60%);
+  margin: 1% 5% 5% 5%;
+  grid-column-gap: 10px;
+}
+
+.placeDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.Fdi {
+  justify-content: center;
+}
+
+.num {
+  grid-column: 1 / span 2;
+}
+.numm {
+  grid-column: 3 / span 4;
+}
+
+.filediv {
+  grid-column: 2 / span 4;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+}
+
+.innherFile {
+  width: 60%;
+}
+
+.checkDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+

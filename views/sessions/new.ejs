@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="shortcut icon" href="/images/Ziv-logo.png" type="image/x-icon">
     <script defer src="./javascripts/script.js"></script>
   </head>
   <body>
@@ -16,7 +17,7 @@
         </div>
       <% } %>
       <h1 class="SignUp">Login</h1>
-      <form method="POST">
+      <form action="<%= action %>" method="POST">
         <div class="form-group">
           <label for="exampleInputEmail1">Email address</label>
           <input name='Email' type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
@@ -32,9 +33,11 @@
       </div>
 
       <input type="submit" class="btn btn-primary btn-lg active btn-block" value="Login" />
-      <h3 class="Member">Not a member?</h3>
-      <a href='/users' class="btn btn-secondary btn-lg active btn-block" role="button" aria-pressed="true">Sign Up</a>
-      <a href='/forgotPassword' class="btn btn-secondary btn-lg active btn-block forgotPassword" role="button" aria-pressed="true">Forgot your Password?</a>
+      <% if (first == false) { %>
+        <h3 class="Member">Not a member?</h3>
+        <a href='/users/workwithus' class="btn btn-secondary btn-lg active btn-block" role="button" aria-pressed="true">Sign Up</a>
+        <a href='/forgotPassword' class="btn btn-secondary btn-lg active btn-block forgotPassword" role="button" aria-pressed="true">Forgot your Password?</a>
+      <% } %>
       </form>
     </div>
   </body>

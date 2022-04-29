@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="shortcut icon" href="/images/Ziv-logo.png" type="image/x-icon">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous" defer></script>
+    <script src="/javascripts/company.js" defer></script>
+    <title>Create Company</title>
+</head>
+<body>
+    <div class="container">
+    <h1 class="SignUp">Create Company</h1>
+        <div class="form-group">
+            <label for="formGroupExampleInput">Company Name</label>
+            <input name='Name' type="text" class="form-control company" id="formGroupExampleInput" placeholder="Company Name">
+        </div>
+        <div class="places">
+            <div class="placeDiv num">
+                <label for="site">Site:</label>
+                <input name='site' type="text" class="site" id="siteIn" placeholder="Site Name">
+            </div>
+            <div class="placeDiv numm">
+                <label for="building">building:</label>
+                <input name='building' type="text" class="building" id="building" placeholder="Building Name">
+            </div>
+            <div class="placeDiv Fdi">
+                <label for="floor">floor:</label>
+                <input name='floor' type="number" class="floor" id="floor" min="1" max="200" value="1">
+            </div>
+            <div class="form-group placeDiv filediv">
+                <div class="innherFile">
+                    <label for="file" style="color: black;" id="fileLabel">File must be image type.</label>
+                    <input type="file" name="file" id="fileInput" accept="image/*">
+                </div>
+                <div class="checkDiv">
+                    <label for="checkbox" class="check">Update file</label>
+                    <input type="checkbox" name="checkbox" checked id="checkbox">
+                </div>
+            </div>
+        </div>
+
+        <div class="CanvasArea">
+            <div class="btn" id="deleteButton">Delete Cubicle</div>
+            <div class="btn" id="resetZoomButton">Reset Zoom</div>
+            <div class="canvasWrapper" id="canvasWrapper" style="overflow-y: scroll;">
+                <div class="listWrapper" id="listWrapper">
+                </div>
+                <canvas id="canvas"></canvas>
+            </div>
+        </div>
+        <input type="button" class="btn btn-primary btn-lg active btn-block"  id="create" value="Create" />
+    </div>
+</body>
+</html>

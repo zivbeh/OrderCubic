@@ -3,7 +3,7 @@ var passport = require('passport')
 
 
 const db = require('../models');
-const User = db.Users;
+const User = db.User;
 
 
 passport.use(new LocalStrategy(
@@ -12,7 +12,6 @@ passport.use(new LocalStrategy(
         passwordField: 'Password',
     },
     async function (email, password, done) {
-        console.log(`email: ${email}`);
 
         const user = await User.findOne({ where: { Email: email } }, async function (err, user) {
             if (err) { return done(err); }
@@ -21,9 +20,7 @@ passport.use(new LocalStrategy(
             }
         });
         
-        console.log(user);
         if (user === null){
-            console.log('Invalid email/password');
             return done(null, false, { message: 'Invalid Email/Password' });
         }
 
@@ -34,11 +31,9 @@ passport.use(new LocalStrategy(
             return done(null, false, { message: 'You have to feel the Password Field' });
         }
         
-        console.log('CheckPassword');
         var theemailPass = user.dataValues.Password;
         await user.checkPassword(password,theemailPass).then(function (valid) {
             if (!valid) {
-                console.log('Invalid Password');
                 return done(null, false, { message: 'Invalid Password' });
             }
             return done(null, user);
@@ -65,7 +60,6 @@ passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
 }));
 
 passport.serializeUser(function(user, done) {
-    console.log('serialized', user);
     return done(null, user.id);;
 });
 

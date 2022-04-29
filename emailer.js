@@ -3,8 +3,8 @@ var nodemailer = require('nodemailer');
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'chatupbussness@gmail.com',
-    pass: process.env.EMAIL_PASSCODE
+    user: process.env.EMAIL_EMAIL,
+    pass: process.env.EMAIL_PASS
   }
 });
 
@@ -16,11 +16,5 @@ module.exports.sender = function (Email, text, subject){
     text: text
   };
 
-  transporter.sendMail(mailOptions, function(error, info){
-      if (error) {
-        console.log('error', error, process.env.EMAIL_PASSCODE, `${process.env.EMAIL_PASSCODE}`);
-      } else {
-        console.log('Email sent: ' + info.response);
-      }
-  });
+  transporter.sendMail(mailOptions);
 };

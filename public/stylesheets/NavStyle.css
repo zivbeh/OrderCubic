@@ -11,6 +11,9 @@ box-sizing: border-box;
 backface-visibility: hidden;
 }
 html,body{font-family: 'Sanchez', serif;}
+html {
+    background: linear-gradient(#ffffff, #9198e5);;
+}
 /*--------------------------------------------------------------*/
 
 nav {

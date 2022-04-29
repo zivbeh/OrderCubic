@@ -2,14 +2,14 @@ var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken');
 const db = require('../models');
-const User = db.Users;
+const User = db.User;
 const mailer = require('../emailer');
+const emailValidator = require('email-validator');
 
 router.get('/', function(req, res, next) {
   var x;
   if (req.user){
     x = req.user.dataValues.Name;
-    console.log(x)
   }
   else {
     x = null;
@@ -22,50 +22,76 @@ router.get('/forgotPassword', function(req, res, next) {
 });
 
 router.post('/forgotPassword', async function(req, res, next) {
-  if(!req.body.Email){
-    console.log('redirecting')
+  if(!req.body.Email || !emailValidator.validate(req.body.Email)){
     req.flash('error', 'you have to enter a valid email!');
     res.redirect('/forgotPassword');
   }
-  console.log('/forgot POST!!!'+ req.body.Email)
 
   const user = await User.findOne({ where: { Email: req.body.Email } });
   if (!user || user === null) {
     req.flash('email', 'No account with that email address exists.');
     return res.redirect('/forgotPassword');
   }
+  let shortId = shortid.generate();
+  let buff = Buffer.from(JSON.stringify(user), "utf-8");
+  //save in db
+  await db.Tokens.create({ shortId: shortId, dataJson: buff, isValidated: false});
 
-  const token = jwt.sign({ user }, process.env.JWT_KEY, { expiresIn: '30m' })
+  const token = jwt.sign({ shortid: shortId }, process.env.JWT_KEY, { expiresIn: '15m' })
 
   const mailOptions = {
     to: user.dataValues.Email,
-    subject: 'My App - reset password',
+    subject: 'Qbook - reset password',
     text:` 
     WARNING!!!\n\n
     At the moment you will click this link your password will be changed!\n\n
     If you have not requested reset password DO NOT click this link.\n\n
     \n\n
-    By clicking on this link below you will can change your Password:\n\n
-    http://${req.headers.host}/reset/?token=${token}`
+    By clicking on this link below you will be able to change your Password:\n\n
+    http://${req.headers.host}/reset/?token=${token}\n\n
+    This link shall expire in 15m.\n\n
+    (C) All rights reserved to Qbook.`
   }
 
   mailer.sender(mailOptions.to, mailOptions.text, mailOptions.subject);
   res.send(`Check out your Email`);
 });
   
+router.get('/resetFirst', async function(req, res) {
+  let user = req.user
+  if (!user) {
+    return res.redirect('/');
+  }
+  res.render('reset', {
+    user: user,
+    error: req.flash('error')
+  });
+});
+
+router.post('/resetFirst', async function(req, res) {
+    const user = req.user;
+    if (!user) {
+      return res.redirect('/');
+    }
+    const realUser = await User.findOne({ where: {Email: user.dataValues.Email} })
+
+    await realUser.update({
+      Password: req.body.Password
+    });    
+    mailer.sender(user.Email, 'Hello,\n\n' + 'This is a confirmation that the password for your account ' + user.Email + ' has just been changed.\n', 'Your password has been changed - Qbook');    
+    res.redirect('/');
+  });
 
 router.get('/reset', async function(req, res) {
   try {
     const token = req.query.token;
     jwt.verify(token, process.env.JWT_KEY, async (err, decodedToken) => {
-      console.log(`token:   ${token}`)
 
-      const user = decodedToken.user;
-      if (!user) {
-        req.flash('error', 'Password reset token is invalid or has expired.');
-        return res.redirect('/forgotPassword');
+      let tokenDB = await db.Tokens.findOne({ where: { shortId: decodedToken.shortId }});
+      if (!decodedToken || tokenDB == undefined) { // make it equal to the shortId generated
+        return res.redirect('/')
       }
-      console.log(user, req.user)
+      let user = JSON.parse(tokenDB.dataValues.dataJson.toString('utf8'))
       res.render('reset', {
         user: user,
         error: req.flash('error')
@@ -79,16 +105,27 @@ router.get('/reset', async function(req, res) {
 
 router.post('/reset', function(req, res) {
   try {
+    if (req.body.Password.length <= 7) {
+      req.flash('error', 'Password length must be more than 7 chars')
+      return res.redirect('/reset');
+    } else if (req.body.Password.length >= 17) {
+      req.flash('error', 'Password length must be less than 17 chars')
+      return res.redirect('/reset');
+    }
     const token = req.query.token;
     jwt.verify(token, process.env.JWT_KEY, async (err, decodedToken) => {
-      const user = decodedToken.user;
-      console.log(user, '---', req.body.Password)
+      let tokenDB = await db.Tokens.findOne({ where: { shortId: decodedToken.shortId }});
+      if (!decodedToken || tokenDB == undefined) { // make it equal to the shortId generated
+        return res.redirect('/')
+      }
+      let user = JSON.parse(tokenDB.dataValues.dataJson.toString('utf8'))
 
-      const realUser = await User.findOne({ where: {Email: user.Email} })
+      const realUser = await User.findOne({ where: {id: user.dataValues.id} })
 
       await realUser.update({
         Password: req.body.Password
       });
+      // await realUser.save();
       res.redirect('/sessions');
       
       mailer.sender(user.Email, 'Hello,\n\n' + 'This is a confirmation that the password for your account ' + user.Email + ' has just been changed.\n', 'Your password has been changed');    
@@ -97,6 +134,10 @@ router.post('/reset', function(req, res) {
     req.flash('error', 'Password reset token is invalid or has expired.');
     return res.redirect('/forgotPassword');
   }
+});
+
+router.get('/errors', function (req,res) {
+  res.send(req.flash('error'));
 });
 
 module.exports = router;

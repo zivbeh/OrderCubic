@@ -1,14 +1,64 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Office order</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/order.css' />
     <link rel="shortcut icon" href="/images/Ziv-logo.png" type="image/x-icon">
-  </head>
-  <body>
-    <h1>order</h1>
-    
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous" defer></script>
+    <script src="/javascripts/order.js" defer></script>
+    <title>Reserve Cubicle</title>
+</head>
+<body>
+    <div class="container">
+    <h1 class="SignUp">Reserve Cubicle</h1>
+        <div class="form-group">
+            <label for="time">When Do you want to order to?</label>
+            <div class="top">
+              <input name='Time' type="date" class="form-control" id="time">
+              <input type="text" id="Searchlist" class="search" placeholder="Filter List">
+            </div>
+            <div class="DropDown">
+              <div class="selctFlex">
+                <span>Site</span>
+                <div class="select" id="site">
+                  <select name="slctS" id="slctS">
+                    <option>Choose</option>
+                  </select>
+                </div>
+              </div>
+              <div class="selctFlex">
+                <span>Building</span>
+                <div class="select" id="building">
+                  <select name="slctB" id="slctB">
+                    <option>Choose</option>
+                  </select>
+                </div>
+              </div>
+              <div class="selctFlex">
+                <span>Floor</span>
+                <div class="select" id="floor">
+                  <select name="slctF" id="slctF">
+                    <option>Choose</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="canvasWrapper">
+            <div class="labelDiv">
+              <label for="canvas" style="color: green;"><img src='https://cdn-icons-png.flaticon.com/512/2778/2778273.png' style="width: 15px; height: 15px; margin-top: -2.5px;" alt="Available Icon">Available</label>
+              <label for="canvas" style="color: red;"><img  style="width: 15px; height: 15px; margin-top: -4px;" src='https://cdn-icons-png.flaticon.com/512/539/539043.png' alt="Unavailable Icon">Unavialable</label>
+              <label for="canvas" style="color: purple;"><img  style="width: 15px; height: 15px; margin-top: -1.6px;" src='https://cdn4.iconfinder.com/data/icons/diamond-colorful/512/Octagonal_Diamond-512.png' alt="Chosen Icon">Chosen</label>
+              <div class="btn" id="resetZoomButton">Reset Zoom</div>
+            </div>
+            <div class="canvasGrid" id="canvasGrid">
+              <div class="listWrapper" id="listWrapper">
+              </div>
+              <canvas id="canvas"></canvas>
+            </div>
+
+        </div>
+        <!--<input type="button" class="btn btn-primary btn-lg active btn-block"  id="create" value="Order" />-->
+    </div>
   </body>
 </html>

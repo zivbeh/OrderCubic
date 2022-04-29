@@ -1,9 +1,9 @@
 <link rel="stylesheet" href="/stylesheets/NavStyle.css">
-
+ <!--(C) All rights reserved to Qbook  -->
 <div class="NavDiv">
   <nav class="navbar navbar-expand-lg navbar-light bg-light" style="align-items: center;">
     <a class="navbar-brand" href="/"><img src="/images/Ziv-logo.png" class="img-logo"></a>
-    <a class="navbar-brand" href="/" style="padding: 0px;">Cubook</a>
+    <a class="navbar-brand" href="/" style="padding: 0px;">Qbook</a>
   <button onclick="openSlideMenu()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -15,15 +15,20 @@
             <a class="nav-link" href="/sessions">Login<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/users">SignUp</a>
+            <a class="nav-link" href="/users/workwithus">Work With Us</a>
           </li>
         <% } else { %>
             <li class="nav-item active">
-              <a class="nav-link" href="/Book">Hello <span class="UserName"><u><%= user.dataValues.Name %></u></span><span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/">Hello <span class="UserName"><u><%= user.dataValues.Name %></u></span><span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="/Book">Book<span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/Book/ReserveCubicle">Book<span class="sr-only">(current)</span></a>
             </li>
+            <% if(user.dataValues.Admin == true) { %>
+              <li class="nav-item active">
+                <a class="nav-link" href="/users/ManageEmployment">Manage Employment<span class="sr-only">(current)</span></a>
+              </li>
+            <% } %>
         <% } %>
     </ul>
   </div>
@@ -32,10 +37,33 @@
   <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
   <% if(user === undefined || user === null){ %>
       <a class="nav-link" href="/sessions">Login<span class="sr-only">(current)</span></a>
-      <a class="nav-link" href="/users">SignUp</a>
+      <a class="nav-link" href="/users/workwithus">Work With Us</a>
   <% } else { %>
         <a class="nav-link" href="/settings">Hello <span class="UserName"><u><%= user.dataValues.Name %></u></span><span class="sr-only">(current)</span></a>
-        <a class="nav-link" href="/Book">Book<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/Book/ReserveCubicle">Book<span class="sr-only">(current)</span></a>
+        <% if(user.dataValues.Admin == true) { %>
+          <a class="nav-link" href="/users/ManageEmployment">Manage Employment<span class="sr-only">(current)</span></a>
+        <% } %>
+        <form action="/sessions/logout" id="myForm" method="POST">
+          <a class="nav-link" id="logoutLink" href="/sessions/logout">Logout<span class="sr-only">(current)</span></a>
+          <script>
+              window.addEventListener("load",function() {
+                document.getElementById("logoutLink").addEventListener("click",function(e) {
+                  e.preventDefault(); // cancel the link
+                  document.getElementById("myForm").submit(); // but make sure nothing has name or ID="submit"
+                });
+              });
+          </script>
+          <style>
+            #logoutLink {
+              color: rgb(216, 135, 135);              
+            }
+            #logoutLink:hover {
+              color: rgb(221, 73, 73);
+              transition: 0.3s ease-in-out;
+            }
+          </style>
+        </form>
   <% } %>
   </div>
 </div>
