@@ -15,6 +15,5 @@ module.exports.sender = function (Email, text, subject){
     subject: subject,
     text: text
   };
-  console.log(mailOptions)
   transporter.sendMail(mailOptions);
 };
