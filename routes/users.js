@@ -143,9 +143,10 @@ router.get('/workwithus', async function(req, res, next) {
 
 router.post('/workwithus', async function(req, res, next) {  
   var error;
-  if (!emailValidator.validate(req.body.Email)) { // does not work on my email/
-    error = req.flash('email', 'Email invalid')
-  } else if ( await User.findOne({ where: { Email: req.body.Email } }) != null) { // HERETHERE IS A PROBELEM
+  // if (!emailValidator.validate(req.body.Email)) { // does not work on my email/
+  //   error = req.flash('email', 'Email invalid')
+  // } else 
+  if ( await User.findOne({ where: { Email: req.body.Email } }) != null) { // HERETHERE IS A PROBELEM
     error = req.flash('email', 'Email is not signed up yet')
   } else if (req.body.Password.length <= 7) {
     error = req.flash('password', 'Password length must be more than 7 chars')
