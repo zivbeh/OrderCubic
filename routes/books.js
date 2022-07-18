@@ -115,7 +115,7 @@ router.post('/ReserveCubicleChange', async (req, res) => {
   const user = req.user;
   if (!user) {
       req.flash('error', 'To get ReserveCubicle you Have to login First');
-      res.redirect('/sessions');
+      return res.redirect('/sessions');
   }
   var company = await db.CompanyData.findOne({where: { CompanyId: user.dataValues.CompanyId, Site: req.body.s, Building: req.body.b, Floor: req.body.f }})
   let takenArr = JSON.parse(company.dataValues.DataTaken.toString('utf8'));

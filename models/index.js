@@ -11,10 +11,8 @@ const db = {};
 let sequelize;
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
-  console.log("connected", sequelize)
 } else {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
-  console.log("connected", sequelize)
 }
 
 fs
