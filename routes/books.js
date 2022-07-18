@@ -93,9 +93,11 @@ router.post('/createCompany', async (req, res) => {
     //the password is being hashed twice which lead to the real password being becoming the first hash and not what the user typed in!!!!! SOLOVED!!!!
     try {
       req.login(user, function(err) {
+        console.log(err,'bad')
         return res.end('response') // gives err in ajax somehow!!!
       });
     } catch (err) {
+      console.log(err,'bad')
       return res.end('/users/workwithus');
     }
 });
@@ -104,9 +106,9 @@ router.get('/ReserveCubicle', async (req, res) => {
     const user = req.user;
     if (!user) {
         req.flash('error', 'To get ReserveCubicle you Have to login First');
-        res.redirect('/sessions');
+        return res.redirect('/sessions');
     }
-    res.render('orders/index', { user: user })
+    return res.render('orders/index', { user: user })
 });
 
 router.post('/ReserveCubicleChange', async (req, res) => {

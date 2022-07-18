@@ -1,23 +1,26 @@
 {
   "development": {
-    "username": "bbc1d42739274d",
-    "password": "b3c648e7",
-    "database": "heroku_c7a2b9cbe8bbce5",
-    "host"    : "us-cdbr-east-04.cleardb.com",
+    "username": "admin",
+    "port": "3306",
+    "password": "zb1gt7k3l?Y!",
+    "database": "database_development",
+    "host": "qbook-db.cbqizzwrzd9e.us-west-1.rds.amazonaws.com",
     "dialect" : "mysql"
   },
   "test": {
-    "username": "bbc1d42739274d",
-    "password": "b3c648e7",
-    "database": "heroku_c7a2b9cbe8bbce5",
-    "host"    : "us-cdbr-east-04.cleardb.com",
+    "username": "admin",
+    "port": "3306",
+    "password": "zb1gt7k3l?Y!",
+    "database": "database_test",
+    "host": "qbook-db.cbqizzwrzd9e.us-west-1.rds.amazonaws.com",
     "dialect" : "mysql"
   },
   "production": {
-    "username": "bbc1d42739274d",
-    "password": "b3c648e7",
-    "database": "heroku_c7a2b9cbe8bbce5",
-    "host"    : "us-cdbr-east-04.cleardb.com",
+    "username": "admin",
+    "port": "3306",
+    "password": "zb1gt7k3l?Y!",
+    "database": "database_production",
+    "host": "qbook-db.cbqizzwrzd9e.us-west-1.rds.amazonaws.com",
     "dialect" : "mysql"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "ordercubic",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -22,25 +22,25 @@
     "cookie-parser": "^1.4.6",
     "cookie-session": "^1.4.0",
     "debug": "~2.6.9",
-    "dotenv": "^8.2.0",
-    "ejs": "~2.6.1",
+    "dotenv": "^16.0.1",
+    "ejs": "^3.1.8",
     "email-validator": "^2.0.4",
     "express": "~4.16.1",
     "formidable": "^2.0.1",
     "fs": "0.0.1-security",
+    "googleapis": "^105.0.0",
     "http-errors": "~1.6.3",
     "jsonwebtoken": "^8.5.1",
     "morgan": "~1.9.1",
     "mysql2": "^2.3.3",
     "nodemailer": "^6.7.2",
-    "passport": "^0.4.1",
+    "passport": "^0.5.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
     "sequelize": "^6.16.1",
     "sequelize-cli": "^6.4.1",
     "shortid": "^2.2.16",
-    "socket.io": "^2.3.0",
-    "sqlite3": "^5.0.0"
+    "socket.io": "^4.5.1"
   }
 }

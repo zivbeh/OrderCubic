@@ -27,14 +27,14 @@
     <form method="POST">
         <div class="form-group">
             <label for="formGroupExampleInput">Full Name</label>
-            <input name='Name' type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+            <input name='Name' type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Name">
         </div>
         <% if (error.type == 'name') { %>
           <h4 id="alert" style="color: red;"><%= error.text %></h4>
         <% } %>
         <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
-            <input name='Email' type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            <input name='Email' type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
         </div>
         <% if (error.type == 'email') { %>
           <h4 id="alert" style="color: red;"><%= error.text %></h4>
