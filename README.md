@@ -1,7 +1,8 @@
 # OrderCubic
 QBook is a web and mobile application used to reduce office expenses and help manage cubicle arrangement between employees.
 
-## Example: If a company is using a model in which every employee has to work 3 times a week out of 5 working days, there are 2 days a week in which every employee doesn't work from the office and his cubicle is left empty. Taking this into account for all employees can lead to massive fees going for unused rent, electricity, cleaning, and security. Using QBook, now the binding between an employee's cubicle is broken, allowing employees to share cubicles on different dates thus the company take many approachess: 
+### Example: 
+If a company is using a model in which every employee has to work 3 times a week out of 5 working days, there are 2 days a week in which every employee doesn't work from the office and his cubicle is left empty. Taking this into account for all employees can lead to massive fees going for unused rent, electricity, cleaning, and security. Using QBook, now the binding between an employee's cubicle is broken, allowing employees to share cubicles on different dates thus the company take many approachess: 
 - using a smaller office space so that the office is full all the time for the same amount of people thus saving on capital expenses and office space per working hour.
 - using more employees to maximize the cubicle occupancy thus saving on using more office space and capital expenses per working hour.
 - turn the unused office space and demoralizing office environment into a better office that is more productive and "fun" for its employees.
