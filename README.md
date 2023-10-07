@@ -1,16 +1,21 @@
 # OrderCubic
 QBook is a web and mobile application used to reduce office expenses and help manage cubicle arrangement between employees.
 
-So many empty office cubicles and how the cafeteria is closed and how people are wasting so much money on rent, electricity, cleaning, security. 
+Example: If a company is using a model in which every employee has to work 3 times a week out of 5 working days, there are 2 days a week in which every employee doesn't work from the office and his cubicle is left empty. Taking this into account for all employees can lead to massive fees going for unused rent, electricity, cleaning, and security. Using QBook, now the binding between an employee's cubicle is broken, allowing employees to share cubicles on different dates thus the company take many approachess: 
+- using a smaller office space so that the office is full all the time for the same amount of people thus saving on capital expenses and office space per working hour.
+- using more employees to maximize the cubicle occupancy thus saving on using more office space and capital expenses per working hour.
+- turn the unused office space and demoralizing office environment into a better office that is more productive and "fun" for its employees.
+
+It started when I saw so many empty office cubicles, the cafeteria was closed and companies were wasting so much money on rent, electricity, cleaning, and security. 
 
 # The problem
 - In a hybrid work environment dedicated work posts are underutilized costing employers excess spending on office space per working hour, and capital expense on equipment per hour of use.
 - According to a recent study, “Just 11% of businesses use all of the office space they own or lease, and nearly 45% use half their available space or less.” As companies come to grips with a more hybrid and remote workforce, their office footprint is changing drastically.
-- Another study found out that the main reason people don’t want to work full time from home is that they need to work with others in collaboration. In other words, leaders say that work productivity will suffer without face-to-face communication and returning to office makes work more productive.
-- In addition, during COVID nearly 46% of companies were planning to reduce office space. Which creates a problem as they are hiring more employees during remote work and transition toward hybrid and office work.
-- Organization attempting to share workspaces amongst employees find it difficult to coordinate and leads to conflicts between employees
+- Another study found that the main reason people don’t want to work full-time from home is that they need to work with others in collaboration. In other words, leaders say that work productivity will suffer without face-to-face communication and returning to office makes work more productive.
+- In addition, during COVID nearly 46% of companies were planning to reduce office space. Which creates a problem as they are hiring more employees during remote work and transitioning toward hybrid and office work.
+- Organizations attempting to share workspaces amongst employees find it difficult to coordinate and leads to conflicts between employees
 - spread out the team members leading to poor collaboration and inefficient use of work environment  
-- Office always seem empty demoralizing employees
+- Office always seems empty demoralizing employees
 
 # The Solution
 Now, My boss said that I have to go to the office at least 3 times a week, doesn’t have to be the same days every week, just go to work 3 times a week.
